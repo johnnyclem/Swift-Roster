@@ -12,6 +12,8 @@
 		EF1F6137193E5A5F00291E91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF1F6135193E5A5F00291E91 /* Main.storyboard */; };
 		EF1F6139193E5A5F00291E91 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF1F6138193E5A5F00291E91 /* Images.xcassets */; };
 		EF1F6145193E5A5F00291E91 /* Swift_RosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F6144193E5A5F00291E91 /* Swift_RosterTests.swift */; };
+		EF1F614F193E5A9000291E91 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1F614E193E5A9000291E91 /* Person.swift */; };
+		EFFF3DF3193E5E6200E47C8A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF3DF2193E5E6200E47C8A /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,8 @@
 		EF1F613E193E5A5F00291E91 /* Swift RosterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Swift RosterTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF1F6143193E5A5F00291E91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF1F6144193E5A5F00291E91 /* Swift_RosterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_RosterTests.swift; sourceTree = "<group>"; };
+		EF1F614E193E5A9000291E91 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		EFFF3DF2193E5E6200E47C8A /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +79,10 @@
 		EF1F612E193E5A5F00291E91 /* Swift Roster */ = {
 			isa = PBXGroup;
 			children = (
+				EF1F614E193E5A9000291E91 /* Person.swift */,
 				EF1F6131193E5A5F00291E91 /* AppDelegate.swift */,
 				EF1F6133193E5A5F00291E91 /* ViewController.swift */,
+				EFFF3DF2193E5E6200E47C8A /* DetailViewController.swift */,
 				EF1F6135193E5A5F00291E91 /* Main.storyboard */,
 				EF1F6138193E5A5F00291E91 /* Images.xcassets */,
 				EF1F612F193E5A5F00291E91 /* Supporting Files */,
@@ -208,8 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF1F614F193E5A9000291E91 /* Person.swift in Sources */,
 				EF1F6134193E5A5F00291E91 /* ViewController.swift in Sources */,
 				EF1F6132193E5A5F00291E91 /* AppDelegate.swift in Sources */,
+				EFFF3DF3193E5E6200E47C8A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +405,7 @@
 				EF1F614A193E5A5F00291E91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EF1F614B193E5A5F00291E91 /* Build configuration list for PBXNativeTarget "Swift RosterTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +414,7 @@
 				EF1F614D193E5A5F00291E91 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
