@@ -8,25 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
     
-    var teachers = Person[]()
-    var students = Person[]()
+    let teachers = Person().threeRandomTeachers()
+    let students = Person().tenRandomStudents()
 
     @IBOutlet var tableView : UITableView
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        teachers = Person().threeRandomTeachers()
-        students = Person().tenRandomStudents()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    // #pragma mark - Table View
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
