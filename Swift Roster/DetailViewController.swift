@@ -29,7 +29,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         // TODO: figure out how to assign only when valid
         
         if self.selectedPerson.image {
-            self.imageView.image = self.selectedPerson.image
+            self.imageView.image = self.selectedPerson.image!
         }
     }
     
