@@ -10,14 +10,16 @@ import UIKit
 
 class Person: NSObject, NSCoding {
 
-    var firstName       = String()
-    var lastName        = String()
-    var github          = String()
-    var twitter         = String()
-    var favoriteColor   = UIColor()
-    var teacher : Bool  = false
-    var image : UIImage = UIImage()
-    var hasImage        = false
+    var firstName = String()
+    var lastName = String()
+    
+    var github = String()
+    var twitter = String()
+    
+    var favoriteColor = UIColor()
+    var teacher = false
+    
+    var image = UIImage(named: "Photo-Video-slr-camera-icon")
     
     func fullName() -> String {
         return firstName + " " + lastName
@@ -42,12 +44,11 @@ class Person: NSObject, NSCoding {
         
         
         for i in 0..firstNames.count {
-          var person               = Person().initWithName(firstNames[i], lastName: lastNames[i])
-                person.github        = "@" + person.fullName().lowercaseString
-                person.twitter       = person.github
-                person.favoriteColor = randomColor()
-          
-          students += person
+            var person = Person(firstName: firstNames[i], lastName: lastNames[i])
+            person.github = "@" + person.fullName().lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
+            person.twitter = person.github
+            person.favoriteColor = randomColor()
+            students += person
         }
         
         return students
