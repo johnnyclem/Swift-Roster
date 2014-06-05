@@ -41,7 +41,7 @@ class Person: NSObject {
         
         for i in 0..firstNames.count {
             var person = Person().initWithName(firstNames[i], lastName: lastNames[i])
-            person.github = "@" + person.fullName().lowercaseString
+            person.github = "@" + person.fullName().lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
             person.twitter = person.github
             person.favoriteColor = randomColor()
             students += person
@@ -59,7 +59,7 @@ class Person: NSObject {
             var person = Person()
             person.firstName = firstNames[i]
             person.lastName = lastNames[i]
-            person.github = "@" + person.fullName().lowercaseString
+            person.github = "@" + person.fullName().lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
             person.twitter = person.github
             person.favoriteColor = randomColor()
             teachers += person
