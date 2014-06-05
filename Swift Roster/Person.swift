@@ -20,21 +20,19 @@ class Person: NSObject, NSCoding {
     var teacher = false
     
     var image = UIImage(named: "Photo-Video-slr-camera-icon")
+    var hasImage = false
     
     func fullName() -> String {
         return firstName + " " + lastName
     }
     
-    init() {
-        //need this for nscoding to work
+    init(firstName : String, lastName : String) {
+        self.firstName = firstName
+        self.lastName = lastName
     }
     
-    func initWithName(firstName : String, lastName : String) -> Person {
-        var person           = Person()
-            person.firstName = firstName
-            person.lastName  = lastName
-      
-        return person
+    convenience init() {
+        self.init(firstName: "Given Name", lastName: "Surname")
     }
     
     func tenRandomStudents() -> Person[] {
