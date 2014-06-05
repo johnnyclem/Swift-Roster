@@ -69,9 +69,9 @@ class Person: NSObject {
     }
     
     func randomColor() -> UIColor {
-        let r = random().bridgeToObjectiveC().doubleValue
-        let g = random().bridgeToObjectiveC().doubleValue
-        let b = random().bridgeToObjectiveC().doubleValue
+        let r = random().bridgeToObjectiveC().floatValue as CGFloat
+        let g = random().bridgeToObjectiveC().floatValue as CGFloat
+        let b = random().bridgeToObjectiveC().floatValue as CGFloat
         return UIColor(red: r, green: g, blue: b, alpha: 1.0)
     }
 }
