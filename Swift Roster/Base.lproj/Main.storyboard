@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YdT-mw-OBX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YdT-mw-OBX">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
@@ -66,13 +66,54 @@
                     <view key="view" contentMode="scaleToFill" id="3tu-gN-2Nt">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo-Video-slr-camera-icon" translatesAutoresizingMaskIntoConstraints="NO" id="t71-tk-gR0">
+                                <rect key="frame" x="140" y="80" width="200" height="200"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="b7E-Jj-JKt"/>
+                                    <constraint firstAttribute="width" constant="200" id="qxa-o3-3XY"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R5W-gO-2Gj">
+                                <rect key="frame" x="192" y="288" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="qNj-pf-j1q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Github" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDw-1M-5Fr">
+                                <rect key="frame" x="192" y="326" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="yPz-1L-zzm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="t71-tk-gR0" secondAttribute="centerX" id="61S-bO-aaX"/>
+                            <constraint firstItem="R5W-gO-2Gj" firstAttribute="top" secondItem="t71-tk-gR0" secondAttribute="bottom" constant="8" id="PtR-z8-6wx"/>
+                            <constraint firstItem="bDw-1M-5Fr" firstAttribute="trailing" secondItem="R5W-gO-2Gj" secondAttribute="trailing" id="TFb-hH-AXd"/>
+                            <constraint firstItem="bDw-1M-5Fr" firstAttribute="leading" secondItem="R5W-gO-2Gj" secondAttribute="leading" id="Vkn-PS-B9y"/>
+                            <constraint firstItem="bDw-1M-5Fr" firstAttribute="top" secondItem="R5W-gO-2Gj" secondAttribute="bottom" constant="8" id="Xd8-qp-8Rb"/>
+                            <constraint firstAttribute="centerX" secondItem="R5W-gO-2Gj" secondAttribute="centerX" id="ZW4-Ff-QpK"/>
+                            <constraint firstItem="t71-tk-gR0" firstAttribute="top" secondItem="z7j-62-OZI" secondAttribute="bottom" constant="16" id="oEe-zg-aCY"/>
+                            <constraint firstAttribute="centerX" secondItem="bDw-1M-5Fr" secondAttribute="centerX" id="tot-ON-OaZ"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
+                    <connections>
+                        <outlet property="githubTextField" destination="bDw-1M-5Fr" id="TxY-os-j2m"/>
+                        <outlet property="imageView" destination="t71-tk-gR0" id="Fky-Af-tFN"/>
+                        <outlet property="twitterTextField" destination="R5W-gO-2Gj" id="6vI-dG-yId"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qp-i9-GmV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1545" y="329"/>
+            <point key="canvasLocation" x="1545" y="319"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kT8-Ab-5uf">
@@ -93,4 +134,7 @@
             <point key="canvasLocation" x="96" y="-231"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Photo-Video-slr-camera-icon" width="512" height="512"/>
+    </resources>
 </document>
