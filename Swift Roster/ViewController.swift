@@ -27,6 +27,15 @@ class ViewController: UIViewController, UITableViewDataSource {
                 return students.count
         }
     }
+
+    func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+        switch section {
+        case 0:
+            return "Teachers"
+        default:
+            return "Students"
+        }
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
@@ -41,6 +50,10 @@ class ViewController: UIViewController, UITableViewDataSource {
 
         cell.textLabel.text = person.fullName()
         return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
