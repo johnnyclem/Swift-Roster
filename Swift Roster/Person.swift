@@ -19,6 +19,9 @@ class Person: NSObject {
     var favoriteColor = UIColor()
     var teacher : Bool = false
     
+    var image : UIImage = UIImage()
+    var hasImage = false
+    
     func fullName() -> String {
         return firstName + " " + lastName
     }
