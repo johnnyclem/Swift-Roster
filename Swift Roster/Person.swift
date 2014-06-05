@@ -26,15 +26,21 @@ class Person: NSObject {
         return firstName + " " + lastName
     }
     
+    func initWithName(firstName : String, lastName : String) -> Person {
+        var person = Person()
+        person.firstName = firstName
+        person.lastName = lastName
+        return person
+    }
+    
     func tenRandomStudents() -> Person[] {
         var students = Person[]()
         var firstNames = ["Tony", "Alyssa", "George", "Chris", "Reed", "Joanne", "Sally", "James", "Tom", "Frank"]
         var lastNames = ["Danza", "Milano", "Foreman", "Meehan", "Sweeney", "Smith", "Jones", "Franco", "Hanks", "Sinatra"]
         
+        
         for i in 0..firstNames.count {
-            var person = Person()
-            person.firstName = firstNames[i]
-            person.lastName = lastNames[i]
+            var person = Person().initWithName(firstNames[i], lastName: lastNames[i])
             person.github = "@" + person.fullName().lowercaseString
             person.twitter = person.github
             person.favoriteColor = randomColor()
@@ -63,9 +69,9 @@ class Person: NSObject {
     }
     
     func randomColor() -> UIColor {
-        var r : CGFloat = random().bridgeToObjectiveC().floatValue
-        var g : CGFloat = random().bridgeToObjectiveC().floatValue
-        var b : CGFloat = random().bridgeToObjectiveC().floatValue
+        let r = random().bridgeToObjectiveC().floatValue
+        let g = random().bridgeToObjectiveC().floatValue
+        let b = random().bridgeToObjectiveC().floatValue
         return UIColor(red: r, green: g, blue: b, alpha: 1.0)
     }
 }
