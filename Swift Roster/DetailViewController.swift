@@ -26,8 +26,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.title = selectedPerson.fullName()
         self.twitterTextField.text = selectedPerson.twitter
         self.githubTextField.text = selectedPerson.github
-        // TODO: figure out how to assign only when valid
-        
+
         if self.selectedPerson.image {
             self.imageView.image = self.selectedPerson.image!
         }
