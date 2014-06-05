@@ -65,6 +65,20 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.imageView.image = originalImage
             self.selectedPerson.image = originalImage
             self.selectedPerson.hasImage = true
+            self.saveImageToDocumentsDirectory(originalImage)
             self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func saveImageToDocumentsDirectory(image : UIImage) {
+        var pngData = UIImagePNGRepresentation(image)
+        let filePath = self.pathForDocumentDirectory() + "/\(self.selectedPerson.fullName()).png"
+        pngData.writeToFile(filePath, atomically: true)
+    }
+    
+    func pathForDocumentDirectory() ->String {
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as String[]
+        let documentsDirectory = paths[0]
+        println(documentsDirectory)
+        return documentsDirectory
     }
 }
