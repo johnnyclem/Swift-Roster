@@ -17,16 +17,12 @@ class Person: NSObject {
     var twitter = String()
     
     var favoriteColor = UIColor()
-    var teacher : Bool = false
+    var teacher = false
     
-    var image : UIImage? = UIImage()
+    var image = UIImage(named: "Photo-Video-slr-camera-icon")
     
     func fullName() -> String {
         return firstName + " " + lastName
-    }
-    
-    init() {
-        self.image = UIImage(named: "Photo-Video-slr-camera-icon")
     }
     
     init(firstName : String, lastName : String) {
@@ -34,10 +30,9 @@ class Person: NSObject {
         self.lastName = lastName
     }
     
-//    convenience init() {
-//        self.init(firstName: "Given Name", lastName: "Surname")
-//        self.image = UIImage(named: "Photo-Video-slr-camera-icon")
-//    }
+    convenience init() {
+        self.init(firstName: "Given Name", lastName: "Surname")
+    }
     
     func tenRandomStudents() -> Person[] {
         var students   = Person[]()
