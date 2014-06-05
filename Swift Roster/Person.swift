@@ -40,9 +40,9 @@ class Person: NSObject {
 //    }
     
     func tenRandomStudents() -> Person[] {
-        var students = Person[]()
+        var students   = Person[]()
         var firstNames = ["Tony", "Alyssa", "George", "Chris", "Reed", "Joanne", "Sally", "James", "Tom", "Frank"]
-        var lastNames = ["Danza", "Milano", "Foreman", "Meehan", "Sweeney", "Smith", "Jones", "Franco", "Hanks", "Sinatra"]
+        var lastNames  = ["Danza", "Milano", "Foreman", "Meehan", "Sweeney", "Smith", "Jones", "Franco", "Hanks", "Sinatra"]
         
         
         for i in 0..firstNames.count {
@@ -57,23 +57,25 @@ class Person: NSObject {
     }
     
     func threeRandomTeachers() -> Person[] {
-        var teachers = Person[]()
+        var teachers   = Person[]()
         var firstNames = ["John", "Taylor", "Brad"]
-        var lastNames = ["Clem", "Potter", "Johnson"]
+        var lastNames  = ["Clem", "Potter", "Johnson"]
         
         for i in 0..firstNames.count {
-            var person = Person()
-            person.firstName = firstNames[i]
-            person.lastName = lastNames[i]
-            person.github = "@" + person.fullName().lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
-            person.twitter = person.github
-            person.favoriteColor = randomColor()
+            var person               = Person()
+                person.firstName     = firstNames[i]
+                person.lastName      = lastNames[i]
+                person.github        = "@" + person.fullName().lowercaseString
+                person.twitter       = person.github
+                person.favoriteColor = randomColor()
+          
             teachers += person
         }
         
         return teachers
     }
-    
+  
+  
     func randomColor() -> UIColor {
         let r = random().bridgeToObjectiveC().floatValue as CGFloat
         let g = random().bridgeToObjectiveC().floatValue as CGFloat
