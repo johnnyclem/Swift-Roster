@@ -15,27 +15,20 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet var githubTextField : UITextField
     @IBOutlet var imageView : UIImageView
     
-//    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-//        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let imageTap = UITapGestureRecognizer(target: self, action: NSSelectorFromString("imagePressed"))
         self.imageView.addGestureRecognizer(imageTap)
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.title = selectedPerson.fullName()
         self.twitterTextField.text = selectedPerson.twitter
         self.githubTextField.text = selectedPerson.github
-        
-        if self.selectedPerson.hasImage {
-        self.imageView.image = selectedPerson.image
-        }
+        // TODO: figure out how to assign only when valid
+        self.imageView.image = selectedPerson.image is UIImage ? selectedPerson.image : nil
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,7 +51,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             let originalImage = info[UIImagePickerControllerOriginalImage] as UIImage
             self.imageView.image = originalImage
             self.selectedPerson.image = originalImage
-            self.selectedPerson.hasImage = true
             self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

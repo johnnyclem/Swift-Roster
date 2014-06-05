@@ -19,19 +19,25 @@ class Person: NSObject {
     var favoriteColor = UIColor()
     var teacher : Bool = false
     
-    var image : UIImage = UIImage()
-    var hasImage = false
+    var image : UIImage? = UIImage()
     
     func fullName() -> String {
         return firstName + " " + lastName
     }
     
-    func initWithName(firstName : String, lastName : String) -> Person {
-        var person = Person()
-        person.firstName = firstName
-        person.lastName = lastName
-        return person
+    init() {
+        self.image = UIImage(named: "Photo-Video-slr-camera-icon")
     }
+    
+    init(firstName : String, lastName : String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+//    convenience init() {
+//        self.init(firstName: "Given Name", lastName: "Surname")
+//        self.image = UIImage(named: "Photo-Video-slr-camera-icon")
+//    }
     
     func tenRandomStudents() -> Person[] {
         var students = Person[]()
@@ -40,7 +46,7 @@ class Person: NSObject {
         
         
         for i in 0..firstNames.count {
-            var person = Person().initWithName(firstNames[i], lastName: lastNames[i])
+            var person = Person(firstName: firstNames[i], lastName: lastNames[i])
             person.github = "@" + person.fullName().lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
             person.twitter = person.github
             person.favoriteColor = randomColor()
