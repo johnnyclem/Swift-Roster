@@ -19,7 +19,7 @@ class Person: NSObject, NSCoding {
     var favoriteColor = UIColor()
     var teacher = false
     
-    var image = UIImage(named: "Photo-Video-slr-camera-icon")
+    var image : UIImage?
     var hasImage = false
     
     func fullName() -> String {

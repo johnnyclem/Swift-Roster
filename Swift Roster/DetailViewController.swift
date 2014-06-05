@@ -27,7 +27,10 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.twitterTextField.text = selectedPerson.twitter
         self.githubTextField.text = selectedPerson.github
         // TODO: figure out how to assign only when valid
-        self.imageView.image = selectedPerson.image
+        
+        if self.selectedPerson.image {
+            self.imageView.image = self.selectedPerson.image
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {

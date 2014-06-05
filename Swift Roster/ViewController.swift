@@ -23,6 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource {
             self.students = savedDictionary.objectForKey("students") as Person[]
             self.loadImagesForPeeps()
             
+            
         }
         else {
             self.teachers = Person().threeRandomTeachers()
