@@ -17,13 +17,10 @@ class ViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let savedDictionary =  NSKeyedUnarchiver.unarchiveObjectWithFile(self.pathForPlistArchive()) as? NSDictionary {
             self.teachers = savedDictionary.objectForKey("teachers") as Person[]
             self.students = savedDictionary.objectForKey("students") as Person[]
             self.loadImagesForPeeps()
-            
-            
         }
         else {
             self.teachers = Person().threeRandomTeachers()
