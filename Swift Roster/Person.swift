@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Person: NSObject {
+class Person: NSObject, NSCoding {
 
     var firstName       = String()
     var lastName        = String()
@@ -21,6 +21,10 @@ class Person: NSObject {
     
     func fullName() -> String {
         return firstName + " " + lastName
+    }
+    
+    init() {
+        //need this for nscoding to work
     }
     
     func initWithName(firstName : String, lastName : String) -> Person {
@@ -68,12 +72,31 @@ class Person: NSObject {
         return teachers
     }
   
-  
     func randomColor() -> UIColor {
         let r = random().bridgeToObjectiveC().floatValue as CGFloat
         let g = random().bridgeToObjectiveC().floatValue as CGFloat
         let b = random().bridgeToObjectiveC().floatValue as CGFloat
         return UIColor(red: r, green: g, blue: b, alpha: 1.0)
+    }
+    
+    init(coder aDecoder: NSCoder!) {
+        self.firstName       = aDecoder.decodeObjectForKey("firstName") as String
+        self.lastName        = aDecoder.decodeObjectForKey("lastName") as String
+        self.github          = aDecoder.decodeObjectForKey("github") as String
+        self.twitter         = aDecoder.decodeObjectForKey("twitter") as String
+        self.favoriteColor   = aDecoder.decodeObjectForKey("favoriteColor") as UIColor
+        self.teacher         = aDecoder.decodeObjectForKey("teacher") as Bool
+        self.hasImage        = aDecoder.decodeObjectForKey("hasImage") as Bool
+  }
+    
+    func encodeWithCoder(aCoder: NSCoder!) {
+        aCoder.encodeObject(firstName, forKey: "firstName")
+        aCoder.encodeObject(lastName, forKey: "lastName")
+        aCoder.encodeObject(self.github, forKey: "github")
+        aCoder.encodeObject(self.twitter, forKey: "twitter")
+        aCoder.encodeObject(self.favoriteColor, forKey: "favoriteColor")
+        aCoder.encodeObject(self.teacher, forKey: "teacher")
+        aCoder.encodeObject(self.hasImage, forKey: "hasImage")
     }
 }
 

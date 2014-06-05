@@ -10,10 +10,28 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
     
-    let teachers = Person().threeRandomTeachers()
-    let students = Person().tenRandomStudents()
+    var teachers = Person[]()
+    var students = Person[]()
 
     @IBOutlet var tableView : UITableView
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let savedDictionary =  NSKeyedUnarchiver.unarchiveObjectWithFile(self.pathForFileArchive()) as? NSDictionary {
+            self.teachers = savedDictionary.objectForKey("teachers") as Person[]
+            self.students = savedDictionary.objectForKey("students") as Person[]
+        }
+        else {
+            self.teachers = Person().threeRandomTeachers()
+            self.students = Person().tenRandomStudents()
+        }
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.saveData()
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -72,6 +90,21 @@ class ViewController: UIViewController, UITableViewDataSource {
 
             detailVC.setSelectedPerson(person)
         }
+    }
+    
+    func saveData(){
+        var saveDictionary = ["teachers" : self.teachers, "students" : self.students]
+        NSKeyedArchiver.archiveRootObject(saveDictionary, toFile: self.pathForFileArchive())
+    }
+    
+    func pathForFileArchive() ->String {
+        
+        
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as String[]
+        let documentsDirectory = paths[0]
+        let filePath = documentsDirectory + "/Archive"
+        println(filePath)
+        return filePath
     }
 
 
