@@ -45,7 +45,6 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="u0w-Md-D4M"/>
                     <connections>
@@ -104,7 +103,6 @@
                             <constraint firstItem="t71-tk-gR0" firstAttribute="top" secondItem="z7j-62-OZI" secondAttribute="bottom" constant="16" id="oEe-zg-aCY"/>
                             <constraint firstAttribute="centerX" secondItem="bDw-1M-5Fr" secondAttribute="centerX" id="tot-ON-OaZ"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <connections>
                         <outlet property="githubTextField" destination="bDw-1M-5Fr" id="TxY-os-j2m"/>
