@@ -27,8 +27,18 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.twitterTextField.text = selectedPerson.twitter
         self.githubTextField.text = selectedPerson.github
         // TODO: figure out how to assign only when valid
-        self.imageView.image = selectedPerson.image
+        
+        if self.selectedPerson.image {
+            self.imageView.image = self.selectedPerson.image
+        }
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.selectedPerson.twitter = self.twitterTextField.text
+        self.selectedPerson.github = self.githubTextField.text
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,6 +61,21 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             let originalImage = info[UIImagePickerControllerOriginalImage] as UIImage
             self.imageView.image = originalImage
             self.selectedPerson.image = originalImage
+            self.selectedPerson.hasImage = true
+            self.saveImageToDocumentsDirectory(originalImage)
             self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func saveImageToDocumentsDirectory(image : UIImage) {
+        var pngData = UIImagePNGRepresentation(image)
+        let filePath = self.pathForDocumentDirectory() + "/\(self.selectedPerson.fullName()).png"
+        pngData.writeToFile(filePath, atomically: true)
+    }
+    
+    func pathForDocumentDirectory() ->String {
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as String[]
+        let documentsDirectory = paths[0]
+        println(documentsDirectory)
+        return documentsDirectory
     }
 }

@@ -10,10 +10,31 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource {
     
-    let teachers = Person().threeRandomTeachers()
-    let students = Person().tenRandomStudents()
+    var teachers = Person[]()
+    var students = Person[]()
 
     @IBOutlet var tableView : UITableView
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let savedDictionary =  NSKeyedUnarchiver.unarchiveObjectWithFile(self.pathForPlistArchive()) as? NSDictionary {
+            self.teachers = savedDictionary.objectForKey("teachers") as Person[]
+            self.students = savedDictionary.objectForKey("students") as Person[]
+            self.loadImagesForPeeps()
+            
+            
+        }
+        else {
+            self.teachers = Person().threeRandomTeachers()
+            self.students = Person().tenRandomStudents()
+        }
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.saveData()
+    }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -73,7 +94,44 @@ class ViewController: UIViewController, UITableViewDataSource {
             detailVC.setSelectedPerson(person)
         }
     }
-
-
+    
+    func saveData(){
+        var saveDictionary = ["teachers" : self.teachers, "students" : self.students]
+        NSKeyedArchiver.archiveRootObject(saveDictionary, toFile: self.pathForPlistArchive())
+    }
+    
+    func pathForPlistArchive() ->String {
+        let documentsDirectory = self.pathForDocumentDirectory()
+        let filePath = documentsDirectory + "/Archive"
+        println(filePath)
+        return filePath
+    }
+    
+    func pathForDocumentDirectory() ->String {
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true) as String[]
+        let documentsDirectory = paths[0]
+        println(documentsDirectory)
+        return documentsDirectory
+    }
+    
+    func loadImagesForPeeps(){
+        for teacher in teachers {
+            if teacher.hasImage {
+                let filePath = self.pathForDocumentDirectory() + "/\(teacher.fullName()).png"
+                var pngData = NSData(contentsOfFile: filePath)
+                var image = UIImage(data: pngData)
+            teacher.image = image
+            }
+            for student in students {
+                if student.hasImage {
+                    let filePath = self.pathForDocumentDirectory() + "/\(student.fullName()).png"
+                    var pngData = NSData(contentsOfFile: filePath)
+                    var image = UIImage(data: pngData)
+                    student.image = image
+                }
+        }
+    }
+}
+    
 }
 
